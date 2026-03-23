@@ -2,7 +2,7 @@
 
 [![Website Status](https://img.shields.io/badge/Status-Live-brightgreen)](https://college-memories-git-main-jayanivaasan.vercel.app/)
 
-🌐 **Live Demo**: https://college-memories-git-main-jayanivaasan.vercel.app/
+🌐 **Live Demo**: https://college-memories-nine.vercel.app/
 
 > **"Preserving memories, creating futures."**
 
