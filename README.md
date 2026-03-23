@@ -1,7 +1,6 @@
 # 🎥 Karpagam Memories - Video Dashboard
 
-[![Website Status](https://img.shields.io/badge/Status-Live-brightgreen)](https://kce.ac.in/)
-[![Tech Stack](https://img.shields.io/badge/Tech-HTML5%20|%20CSS3%20|%20JS-blue)](https://developer.mozilla.org/en-US/)
+[![Website Status](https://img.shields.io/badge/Status-Live-brightgreen)]((https://college-memories-git-main-jayanivaasan.vercel.app/))
 
 
 > **"Preserving memories, creating futures."**
