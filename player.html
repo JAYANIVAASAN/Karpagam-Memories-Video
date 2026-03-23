@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player - Karpagam Memories</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="player.css">
+    <link rel="icon" type="image/webp" href="images/logofirst.webp">
+</head>
+<body>
+    <nav id="main-nav"></nav>
+    <main class="player-main">
+        <div class="video-card reveal" id="player-container">
+            <div class="iframe-wrapper" id="iframe-wrapper"></div>
+            <div class="video-info-row">
+                <div class="video-titles">
+                    <h2 id="current-video-title">Loading...</h2>
+                    <p id="current-video-meta">Please wait</p>
+                </div>
+                <div class="video-actions-group" id="video-actions">
+                    <button class="btn btn-outline" id="like-btn" onclick="toggleLike()"> Like</button>
+                    <button class="btn btn-outline" id="save-btn" onclick="saveToVault()"> Save to Vault</button>
+                    <a href="departments.html" class="btn btn-secondary">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="main-footer"></footer>
+
+    <script src="script.js"></script>
+    <script>
+        let currentVideoData = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const title = params.get('title');
+            const meta = params.get('meta');
+            const fileName = params.get('file');
+            const thumb = params.get('thumb');
+
+            if (!title || !fileName) {
+                window.location.href = 'departments.html';
+                return;
+            }
+
+            currentVideoData = { title, meta, fileName, thumb };
+            
+            document.title = `${title} - Karpagam Memories`;
+            document.getElementById('current-video-title').textContent = title;
+            document.getElementById('current-video-meta').textContent = meta;
+
+            const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+            const wrapper = document.getElementById('iframe-wrapper');
+
+            if (isLoggedIn) {
+                wrapper.innerHTML = `
+                    <video width="100%" height="100%" controls autoplay muted>
+                        <source src="video/${fileName}" type="video/mp4">
+                    </video>`;
+            } else {
+                wrapper.innerHTML = `
+                    <div class="auth-overlay">
+                        <h3>Login Required</h3>
+                        <a href="login.html" class="btn">Sign In to Watch</a>
+                    </div>`;
+                document.getElementById('video-actions').style.display = 'none';
+            }
+        });
+
+        function toggleLike() {
+            const btn = document.getElementById('like-btn');
+            btn.classList.toggle('active');
+            btn.textContent = btn.classList.contains('active') ? ' Liked' : ' Like';
+        }
+
+        function saveToVault() {
+            if (!currentVideoData) return;
+            let saved = JSON.parse(localStorage.getItem('savedVideos') || '[]');
+            if (saved.find(v => v.title === currentVideoData.title)) {
+                alert("Already in your vault!");
+                return;
+            }
+            saved.push(currentVideoData);
+            localStorage.setItem('savedVideos', JSON.stringify(saved));
+            alert("Saved to My Vault!");
+        }
+    </script>
+</body>
+</html>

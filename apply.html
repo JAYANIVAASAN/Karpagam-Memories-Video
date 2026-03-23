@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Event - Karpagam Memories</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="apply.css">
+    <link rel="icon" type="image/webp" href="images/logofirst.webp">
+</head>
+<body>
+    <nav id="main-nav"></nav>
+    <main>
+        <header class="reveal">
+            <h1>Event Application</h1>
+            <p>Register to secure your spot for our upcoming campus events.</p>
+        </header>
+        <form id="apply-form" class="reveal">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" required placeholder="e.g. John Doe">
+            <label for="uid">Roll Number</label>
+            <input type="text" id="uid" required placeholder="e.g. 21IT001">
+            <label for="department">Department</label>
+            <select id="department" required>
+                <option value="" disabled selected>Select department</option>
+                <option value="cs">Computer Science</option>
+                <option value="it">Information Technology</option>
+                <option value="ai">Artificial Intelligence</option>
+                <option value="ece">Electronics (ECE)</option>
+                <option value="mech">Mechanical Engineering</option>
+                <option value="civil">Civil Engineering</option>
+            </select>
+            <label for="event">Event</label>
+            <select id="event" required>
+                <option value="" disabled selected>Select event</option>
+                <option value="druva">Druva Fest</option>
+                <option value="pongal">Pongal Celebration</option>
+                <option value="alumni">Alumni Meet</option>
+                <option value="workshop">Technical Workshop</option>
+                <option value="dance">Cultural Dance</option>
+                <option value="iv">Industrial Visit (IV)</option>
+            </select>
+            <button type="submit" class="btn" style="width:100%">Submit Application</button>
+        </form>
+    </main>
+    <footer id="main-footer"></footer>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('apply-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Application submitted!");
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

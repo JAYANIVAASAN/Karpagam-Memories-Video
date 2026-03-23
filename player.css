@@ -1,0 +1,104 @@
+.video-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    box-shadow: var(--shadow);
+}
+
+.iframe-wrapper {
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.video-titles h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.video-titles p {
+    color: var(--text-secondary);
+}
+
+.video-actions-group {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    background-color: var(--text-secondary) !important;
+}
+
+.auth-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+.auth-overlay h3 {
+    font-size: 1.5rem;
+}
+
+.player-main {
+    min-height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .video-card {
+        padding: 1.5rem;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+    
+    .player-main {
+        padding: 2rem 1rem;
+    }
+
+    .video-info-row {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .video-actions-group {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .video-actions-group .btn {
+        flex: 1;
+        min-width: 140px;
+    }
+}

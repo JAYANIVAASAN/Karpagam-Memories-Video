@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Vault - Karpagam</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="saved.css">
+    <link rel="icon" type="image/webp" href="images/logofirst.webp">
+</head>
+<body>
+    <nav id="main-nav"></nav>
+    <main class="vault-main-content">
+        <header class="vault-header">
+            <h1 class="vault-title">My Vault</h1>
+            <p class="vault-subtitle">Your curated collection of campus memories.</p>
+        </header>
+        <div id="vault-content" class="reveal"></div>
+    </main>
+    <footer id="main-footer"></footer>
+    <script src="script.js"></script>
+    <script>
+        const vault = document.getElementById('vault-content');
+        const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+
+        function renderVault() {
+            if (!isLoggedIn) {
+                vault.innerHTML = `<div class="vault-empty-state">
+                    <h2>Keep your memories safe</h2>
+                    <p>Please log in to your account to access your personal vault.</p>
+                    <a href="login.html" class="btn btn-lg">Sign In to Continue</a>
+                </div>`;
+                return;
+            }
+
+            const savedVideos = JSON.parse(localStorage.getItem('savedVideos') || '[]');
+            
+            if (savedVideos.length === 0) {
+                vault.innerHTML = `<div class="vault-no-items">
+                    <h3>No saved memories yet</h3>
+                    <p>Explore academic departments to find and save your favorite highlights.</p>
+                    <a href="departments.html" class="btn btn-outline">Go to Departments</a>
+                </div>`;
+                return;
+            }
+
+            vault.innerHTML = `
+                <div class="vault-grid">
+                    ${savedVideos.map((video, index) => `
+                        <article class="reveal visible">
+                            <img src="${video.thumb || 'images/cse.jpg'}" alt="${video.title}">
+                            <div class="content">
+                                <h3>${video.title}</h3>
+                                <p>${video.meta}</p>
+                                <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+                                    <button onclick="playVideo('${video.title}', '${video.meta}', '${video.fileName}')" class="btn" style="flex: 2;">Watch</button>
+                                    <button class="btn btn-outline" onclick="removeFromVault(${index})" style="flex: 1; padding: 0.5rem;" title="Remove">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    `).join('')}
+                </div>`;
+        }
+
+        function removeFromVault(index) {
+            let savedVideos = JSON.parse(localStorage.getItem('savedVideos') || '[]');
+            savedVideos.splice(index, 1);
+            localStorage.setItem('savedVideos', JSON.stringify(savedVideos));
+            renderVault();
+        }
+
+        renderVault();
+    </script>
+</body>
+</html>

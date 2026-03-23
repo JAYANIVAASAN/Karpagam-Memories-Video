@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Videos - Karpagam</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="dept_videos.css">
+    <link rel="icon" type="image/webp" href="images/logofirst.webp">
+</head>
+<body>
+<nav id="main-nav"></nav>
+<main>
+    <header><h1>Department Videos</h1></header>
+
+    <div class="search-container">
+        <span class="search-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </span>
+        <input type="text" id="video-search" class="search-input" placeholder="Search videos by title...">
+    </div>
+
+    <section id="video-grid">
+        <article class="reveal">
+            <img src="images/cultural dance.webp" alt="Video 1">
+            <div class="content">
+                <h3>Cultural dance</h3>
+                <p>KCE</p>
+                <button onclick="playVideo('Cultural dance', 'KCE', '1.mp4')" class="btn">Play Now</button>
+            </div>
+        </article>
+        <article class="reveal">
+            <img src="images/alumni-meet.webp" alt="Video 2">
+            <div class="content">
+                <h3>Alumni-meet</h3>
+                <p>KCE</p>
+                <button onclick="playVideo('Alumni-meet', 'KCE', '2.mp4')" class="btn">Play Now</button>
+            </div>
+        </article>
+        <article class="reveal">
+            <img src="images/workshop.jpg" alt="Video 3">
+            <div class="content">
+                <h3>Workshop</h3>
+                <p>KCE</p>
+                <button onclick="playVideo('Workshop', 'KCE', '3.mp4')" class="btn">Play Now</button>
+            </div>
+        </article>
+        <article class="reveal">
+            <img src="images/duruva.jpg" alt="Video 4">
+            <div class="content">
+                <h3>Druva Fest</h3>
+                <p>KCE</p>
+                <button onclick="playVideo('Druva Fest', 'KCE', '4.mp4')" class="btn">Play Now</button>
+            </div>
+        </article>
+        <article class="reveal">
+            <img src="images/pongal.jpeg" alt="Video 5">
+            <div class="content">
+                <h3>Pongal Celebration</h3>
+                <p>KCE</p>
+                <button onclick="playVideo('Pongal Celebration', 'KCE', '5.mp4')" class="btn">Play Now</button>
+            </div>
+        </article>
+        <article class="reveal">
+            <img src="images/iv.jpg" alt="Video 6">
+            <div class="content">
+                <h3>IV</h3>
+                <p>KCE</p>
+                <button onclick="playVideo('IV', 'KCE', '6.mp4')" class="btn">Play Now</button>
+            </div>
+        </article>
+    </section>
+</main>
+<footer id="main-footer"></footer>
+<script src="script.js"></script>
+</body>
+</html>
